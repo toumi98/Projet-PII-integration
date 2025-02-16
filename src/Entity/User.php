@@ -71,6 +71,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?\DateTimeInterface $birthDate = null;
 
+    /**
+     * @var Collection<int, Reponse>
+     */
+    #[ORM\OneToMany(targetEntity: Reponse::class, mappedBy: 'user_id')]
+    private Collection $reponses;
+
+    /**
+     * @var Collection<int, Enchere>
+     */
+    #[ORM\OneToMany(targetEntity: Enchere::class, mappedBy: 'id_gagnant')]
+    private Collection $encheres;
+
+    /**
+     * @var Collection<int, ProduitStore>
+     */
+    #[ORM\OneToMany(targetEntity: ProduitStore::class, mappedBy: 'agriculteur_id')]
+    private Collection $produitStores;
+
+    /**
+     * @var Collection<int, ProduitEnchere>
+     */
+    #[ORM\OneToMany(targetEntity: ProduitEnchere::class, mappedBy: 'agriculteur_id')]
+    private Collection $produitEncheres;
+
+    /**
+     * @var Collection<int, Enchere>
+     */
+    #[ORM\OneToMany(targetEntity: Enchere::class, mappedBy: 'id_agriculteur')]
+    private Collection $encheres_agriculteur;
+
     public function getId(): ?int
     {
         return $this->id;
