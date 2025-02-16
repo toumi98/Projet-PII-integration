@@ -34,7 +34,7 @@ class ProduitEnchere
 
     #[ORM\ManyToOne(inversedBy: 'produitEncheres')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?categorie $categorie_id = null;
+    private ?Categorie $categorie_id = null;
 
     public function getId(): ?int
     {
@@ -89,24 +89,24 @@ class ProduitEnchere
         return $this;
     }
 
-    public function getAgriculteurId(): ?Agriculteur
+    public function getAgriculteurId(): ?User
     {
         return $this->agriculteur_id;
     }
 
-    public function setAgriculteurId(?Agriculteur $agriculteur_id): static
+    public function setAgriculteurId(?User $agriculteur_id): static
     {
         $this->agriculteur_id = $agriculteur_id;
 
         return $this;
     }
 
-    public function getCategorieId(): ?categorie
+    public function getCategorieId(): ?Categorie
     {
         return $this->categorie_id;
     }
 
-    public function setCategorieId(?categorie $categorie_id): static
+    public function setCategorieId(?Categorie $categorie_id): static
     {
         $this->categorie_id = $categorie_id;
 

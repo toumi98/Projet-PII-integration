@@ -40,12 +40,12 @@ class Reponse
         return $this;
     }
 
-    public function getUserId(): ?Users
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(?Users $user_id): static
+    public function setUserId(?User $user_id): static
     {
         $this->user_id = $user_id;
 

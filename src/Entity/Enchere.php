@@ -47,24 +47,24 @@ class Enchere
         return $this;
     }
 
-    public function getIdGagnant(): ?Users
+    public function getIdGagnant(): ?User
     {
         return $this->id_gagnant;
     }
 
-    public function setIdGagnant(?Users $id_gagnant): static
+    public function setIdGagnant(?User $id_gagnant): static
     {
         $this->id_gagnant = $id_gagnant;
 
         return $this;
     }
 
-    public function getIdAgriculteur(): ?Agriculteur
+    public function getIdAgriculteur(): ?User
     {
         return $this->id_agriculteur;
     }
 
-    public function setIdAgriculteur(?Agriculteur $id_agriculteur): static
+    public function setIdAgriculteur(?User $id_agriculteur): static
     {
         $this->id_agriculteur = $id_agriculteur;
 

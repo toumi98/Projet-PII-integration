@@ -37,12 +37,12 @@ class Panier
         return $this->id;
     }
 
-    public function getIdClient(): ?Users
+    public function getIdClient(): ?User
     {
         return $this->id_client;
     }
 
-    public function setIdClient(Users $id_client): static
+    public function setIdClient(User $id_client): static
     {
         $this->id_client = $id_client;
 

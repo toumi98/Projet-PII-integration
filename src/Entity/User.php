@@ -212,4 +212,155 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Reponse>
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponse $reponse): static
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses->add($reponse);
+            $reponse->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponse $reponse): static
+    {
+        if ($this->reponses->removeElement($reponse)) {
+            // set the owning side to null (unless already changed)
+            if ($reponse->getUserId() === $this) {
+                $reponse->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enchere>
+     */
+    public function getEncheres(): Collection
+    {
+        return $this->encheres;
+    }
+
+    public function addEnchere(Enchere $enchere): static
+    {
+        if (!$this->encheres->contains($enchere)) {
+            $this->encheres->add($enchere);
+            $enchere->setIdGagnant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnchere(Enchere $enchere): static
+    {
+        if ($this->encheres->removeElement($enchere)) {
+            // set the owning side to null (unless already changed)
+            if ($enchere->getIdGagnant() === $this) {
+                $enchere->setIdGagnant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProduitStore>
+     */
+    public function getProduitStores(): Collection
+    {
+        return $this->produitStores;
+    }
+
+    public function addProduitStore(ProduitStore $produitStore): static
+    {
+        if (!$this->produitStores->contains($produitStore)) {
+            $this->produitStores->add($produitStore);
+            $produitStore->setAgriculteurId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduitStore(ProduitStore $produitStore): static
+    {
+        if ($this->produitStores->removeElement($produitStore)) {
+            // set the owning side to null (unless already changed)
+            if ($produitStore->getAgriculteurId() === $this) {
+                $produitStore->setAgriculteurId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProduitEnchere>
+     */
+    public function getProduitEncheres(): Collection
+    {
+        return $this->produitEncheres;
+    }
+
+    public function addProduitEnchere(ProduitEnchere $produitEnchere): static
+    {
+        if (!$this->produitEncheres->contains($produitEnchere)) {
+            $this->produitEncheres->add($produitEnchere);
+            $produitEnchere->setAgriculteurId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduitEnchere(ProduitEnchere $produitEnchere): static
+    {
+        if ($this->produitEncheres->removeElement($produitEnchere)) {
+            // set the owning side to null (unless already changed)
+            if ($produitEnchere->getAgriculteurId() === $this) {
+                $produitEnchere->setAgriculteurId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enchere>
+     */
+    public function getEncheresAgriculteur(): Collection
+    {
+        return $this->encheres_agriculteur;
+    }
+
+    public function addEnchereAgriculteur(Enchere $encheres_agriculteur): static
+    {
+        if (!$this->encheres_agriculteur->contains($encheres_agriculteur)) {
+            $this->encheres_agriculteur->add($encheres_agriculteur);
+            $encheres_agriculteur->setIdAgriculteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnchereAgriculteur(Enchere $encheres_agriculteur): static
+    {
+        if ($this->encheres_agriculteur->removeElement($encheres_agriculteur)) {
+            // set the owning side to null (unless already changed)
+            if ($encheres_agriculteur->getIdAgriculteur() === $this) {
+                $encheres_agriculteur->setIdAgriculteur(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

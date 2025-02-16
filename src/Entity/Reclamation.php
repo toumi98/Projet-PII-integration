@@ -55,12 +55,12 @@ class Reclamation
         return $this;
     }
 
-    public function getIdUser(): ?Users
+    public function getIdUser(): ?User
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?Users $id_user): static
+    public function setIdUser(?User $id_user): static
     {
         $this->id_user = $id_user;
 
