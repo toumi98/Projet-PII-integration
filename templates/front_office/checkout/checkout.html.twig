@@ -1,13 +1,121 @@
 {% extends 'base_front.html.twig' %}
 
-{% block title %}Hello FrontOffice/CheckoutController!{% endblock %}
+{% block title %}Checkout - Finaliser votre commande{% endblock %}
 
 {% block body %}
-  <h1>Finaliser la commande</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit">Valider la commande</button>
-    {{ form_end(form) }}
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <p class="breadcrumbs">
+          <span class="mr-2"><a href="{{ path('app_front_office_home') }}">Accueil</a></span> 
+          <span>Checkout</span>
+        </p>
+        <h1 class="mb-0 bread">Finaliser votre commande</h1>
+      </div>
+    </div>
+  </div>
 </div>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Formulaire de commande -->
+      <div class="col-xl-7 ftco-animate">
+        {{ form_start(form, {'attr': {'class': 'billing-form'}}) }}
+          <h3 class="mb-4 billing-heading">Détails de facturation</h3>
+          <div class="row align-items-end">
+            <div class="col-md-6">
+              <div class="form-group">
+                {{ form_label(form.nom, 'Nom') }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {{ form_label(form.prenom, 'Prénom') }}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                {{ form_label(form.adresse, 'Adresse') }}
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {{ form_label(form.ville, 'Ville') }}
+                {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {{ form_label(form.code_postal, 'Code Postal') }}
+                {{ form_widget(form.code_postal, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                {{ form_label(form.num_tel, 'Téléphone') }}
+                {{ form_widget(form.num_tel, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                {{ form_label(form.email, 'Adresse Email') }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                {{ form_label(form.description, 'Description') }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Seul bouton pour valider la commande -->
+          <button type="submit" class="btn btn-primary py-3 px-4">Passer la commande</button>
+          
+        {{ form_end(form) }}
+      </div>
+
+      <!-- Récapitulatif de la commande 
+      <div class="col-xl-5">
+        <div class="row mt-5 pt-3">
+          <div class="col-md-12 d-flex mb-5">
+            <div class="cart-detail cart-total p-3 p-md-4">
+              <h3 class="billing-heading mb-4">Récapitulatif de commande</h3>
+              <p class="d-flex">
+                <span>Produit</span>
+                <span>{{ commande.nomProduit ?? 'Nom du produit' }}</span>
+              </p>
+              <p class="d-flex">
+                <span>Quantité</span>
+                <span>{{ commande.quantite ?? '1' }}</span>
+              </p>
+              <p class="d-flex">
+                <span>Prix unitaire</span>
+                <span>{{ commande.prix ?? '20.60' }} DT</span>
+              </p>
+              <p class="d-flex">
+                <span>Livraison</span>
+                <span>8.00 DT</span>
+              </p>
+              <hr>
+              <p class="d-flex total-price">
+                <span>Total</span>
+                <span>{{ (commande.prix ?? 20.60) * (commande.quantite ?? 1) + 8.00 }} DT</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 {% endblock %}
