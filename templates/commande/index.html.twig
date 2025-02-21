@@ -1,4 +1,4 @@
-{% extends 'base_front.html.twig' %}
+{% extends 'base-user.html.twig' %}
 
 {% block title %}New Commande{% endblock %}
 {% block body %}
@@ -23,10 +23,24 @@
                 <td>{{ commande.prix }}</td>
                 <td>{{ commande.adresse }}</td>
                 <td>{{ commande.numTel }}</td>
-                <td>
-                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}">show</a>
-                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">edit</a>
-                </td>
+                
+               <td>
+                <a href="{{ path('app_commande_show', {'id': commande.id}) }}" title="Afficher" class="me-2">
+                    <i class="fas fa-eye"></i>
+                </a>
+                <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" title="Modifier" class="me-2">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <form method="post" action="{{ path('app_commande_delete', {'id': commande.id}) }}" 
+                    onsubmit="return confirm('Voulez-vous vraiment supprimer cette commande ?');"
+                    class="d-inline">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commande.id) }}">
+                    <button class="btn text-danger border-0 p-0">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
+ 
             </tr>
         {% else %}
             <tr>
