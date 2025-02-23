@@ -1,12 +1,23 @@
 {% extends 'base_front.html.twig' %}
-{% block title %}New Commande{% endblock %}
+
+{% block title %}Modifier Commande{% endblock %}
 
 {% block body %}
-    <h1>Edit Commande</h1>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card shadow-lg border-0 rounded-4 w-50">
+            <div class="card-header bg-gradient btn-info text-dark text-center py-3">
+                <h2 class="fw-bold">Modifier la Commande</h2>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-center">
+                    <div class="w-100">
+                        {{ include('commande/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+       
 
-    {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_commande_index') }}">back to list</a>
-
-    {{ include('commande/_delete_form.html.twig') }}
+    </div>
+     {{ '&nbsp;&nbsp;&nbsp;'|raw }}
 {% endblock %}

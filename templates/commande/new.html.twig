@@ -1,22 +1,21 @@
 {% extends 'base_front.html.twig' %}
 
-{% block title %}New Commande{% endblock %}
+{% block title %}Nouvelle Commande{% endblock %}
 
 {% block body %}
- <div class="d-flex justify-content mt-3">
-        <a href="{{ path('app_front_office_cart') }}" class="btn btn me-2">
-            Retour au panier
-        </a>
-        
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+                <h2>Créer une nouvelle commande</h2>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    {{ include('commande/_form.html.twig') }}
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{{ path('app_front_office_cart') }}" class="btn btn-secondary">🛒 Retour au panier</a>
+            </div>
+        </div>
     </div>
-    <h1 class="text-center">Créer une nouvelle commande</h1>
-
-    <div class="d-flex justify-content-center">
-        {{ include('commande/_form.html.twig') }}
-    </div>
-
-   <p></p>
-   <p></p>
-  {{ '&nbsp;&nbsp;&nbsp;'|raw }}
-
 {% endblock %}
