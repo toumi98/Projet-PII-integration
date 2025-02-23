@@ -3,9 +3,18 @@
 {% block title %}New Commande{% endblock %}
 
 {% block body %}
-    <h1>Crée nouvelle Commande</h1>
+ <div class="d-flex justify-content mt-3">
+        <a href="{{ path('app_front_office_cart') }}" class="btn btn me-2">
+            Retour au panier
+        </a>
+        
+    </div>
+    <h1 class="text-center">Créer une nouvelle commande</h1>
 
-    {{ include('commande/_form.html.twig') }}
+    <div class="d-flex justify-content-center">
+        {{ include('commande/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('app_commande_index') }}">back to list</a>
+   
+
 {% endblock %}
