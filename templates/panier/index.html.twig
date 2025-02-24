@@ -1,0 +1,41 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Liste des Paniers</h1>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for panier in paniers %}
+                <tr>
+                    <td>{{ panier.id }}</td>
+                    <td>
+                        <a href="{{ path('app_panier_show', {'id': panier.id}) }}" class="btn btn-info btn-sm">
+                            <i class="fas fa-eye"></i> Voir
+                        </a>
+                        <a href="{{ path('app_panier_edit', {'id': panier.id}) }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Modifier
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2" class="text-center">Aucun panier trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_panier_new') }}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Ajouter un panier
+        </a>
+    </div>
+{% endblock %}

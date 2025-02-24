@@ -40,4 +40,15 @@ class PanierRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findPanierWithProduits(int $panierId): ?Panier
+{
+    return $this->createQueryBuilder('p')
+        ->leftJoin('p.id_produit', 'produit')
+        ->addSelect('produit')
+        ->where('p.id = :panierId')
+        ->setParameter('panierId', $panierId)
+        ->getQuery()
+        ->getOneOrNullResult();
+}
+
 }

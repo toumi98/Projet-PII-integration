@@ -92,9 +92,15 @@
                         <button type="button" class="btn btn-success">
                             <a href="{{ path('app_front_office_shop') }}" style="color: white; text-decoration: none;">Ajouter un autre produit</a>
                         </button>
-                        <button type="submit" name="update_cart" class="btn btn-primary">
-                            Mettre à jour le panier
-                        </button>
+                          {% if panier is defined and panier is not null %}
+    <a href="{{ path('app_panier_edit', {'id': panier.id}) }}" class="btn btn-warning btn-sm">
+        <i class="fas fa-edit"></i> Modifier
+    </a>
+{% else %}
+    <p>Votre panier est vide.</p>
+{% endif %}
+
+
                     </div>
                 </form>
             </div>

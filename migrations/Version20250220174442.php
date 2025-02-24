@@ -26,8 +26,15 @@ final class Version20250220174442 extends AbstractMigration
         $this->addSql('CREATE TABLE historique (id INT AUTO_INCREMENT NOT NULL, offre DOUBLE PRECISION NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE livraison (id INT AUTO_INCREMENT NOT NULL, id_transporteur_id INT NOT NULL, is_etat TINYINT(1) NOT NULL, INDEX IDX_A60C9F1F7E96AC2C (id_transporteur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE notification (id INT AUTO_INCREMENT NOT NULL, type VARCHAR(255) NOT NULL, description LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE panier (id INT AUTO_INCREMENT NOT NULL, id_client_id INT NOT NULL, UNIQUE INDEX UNIQ_24CC0DF299DED506 (id_client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE panier_produit_store (panier_id INT NOT NULL, produit_store_id INT NOT NULL, INDEX IDX_CC2EEE7DF77D927C (panier_id), INDEX IDX_CC2EEE7D998D9A02 (produit_store_id), PRIMARY KEY(panier_id, produit_store_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE panier (
+            id INT AUTO_INCREMENT NOT NULL, 
+            id_client_id INT NOT NULL, 
+            quantite INT NOT NULL DEFAULT 1, 
+            total DECIMAL(10,2) NOT NULL, 
+            UNIQUE INDEX UNIQ_24CC0DF299DED506 (id_client_id), 
+            PRIMARY KEY(id)
+        ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+                $this->addSql('CREATE TABLE panier_produit_store (panier_id INT NOT NULL, produit_store_id INT NOT NULL, INDEX IDX_CC2EEE7DF77D927C (panier_id), INDEX IDX_CC2EEE7D998D9A02 (produit_store_id), PRIMARY KEY(panier_id, produit_store_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE produit_enchere (id INT AUTO_INCREMENT NOT NULL, agriculteur_id_id INT NOT NULL, categorie_id_id INT NOT NULL, nom VARCHAR(100) NOT NULL, description LONGTEXT NOT NULL, quantie INT NOT NULL, path_img VARCHAR(255) NOT NULL, INDEX IDX_FE2A0C7612F42B4A (agriculteur_id_id), INDEX IDX_FE2A0C768A3C7387 (categorie_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE produit_store (id INT AUTO_INCREMENT NOT NULL, agriculteur_id_id INT NOT NULL, categorie_id_id INT NOT NULL, nom VARCHAR(100) NOT NULL, description LONGTEXT NOT NULL, quantite DOUBLE PRECISION NOT NULL, prix DOUBLE PRECISION NOT NULL, path_img VARCHAR(255) NOT NULL, INDEX IDX_CFCB3FE312F42B4A (agriculteur_id_id), INDEX IDX_CFCB3FE38A3C7387 (categorie_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE reclamation (id INT AUTO_INCREMENT NOT NULL, id_user_id INT NOT NULL, description LONGTEXT NOT NULL, is_etat TINYINT(1) NOT NULL, INDEX IDX_CE60640479F37AE5 (id_user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container mt-5">
         <div class="card shadow-lg">
-            <div class="card-header bg-success text-white text-center">
+            <div class="btn-secondary  text-center">
                 <h2>Créer une nouvelle commande</h2>
             </div>
             <div class="card-body">
@@ -13,9 +13,10 @@
                     {{ include('commande/_form.html.twig') }}
                 </div>
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer  ">
                 <a href="{{ path('app_front_office_cart') }}" class="btn btn-secondary">🛒 Retour au panier</a>
             </div>
         </div>
     </div>
+       {{ '&nbsp;&nbsp;&nbsp;'|raw }}
 {% endblock %}

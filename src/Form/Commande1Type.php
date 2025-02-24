@@ -19,10 +19,7 @@ class Commande1Type extends AbstractType
             ->add('prix')
             ->add('adresse')
             ->add('num_tel')
-            ->add('id_client_commande', EntityType::class, [
-                'class' => Panier::class,
-'choice_label' => 'id',
-            ])
+            
             ->add('livraison', EntityType::class, [
                 'class' => Livraison::class,
 'choice_label' => 'id',
