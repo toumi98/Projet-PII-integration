@@ -14,8 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class Panier2Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
+
     {
-        $builder
+        $builder 
             ->add('id_client', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
