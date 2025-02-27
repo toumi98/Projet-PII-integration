@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facture - AgriEnchère</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 0;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .header img {
+            max-width: 80px;
+        }
+        .details {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 10px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+           <img src="http://ton-site.com/images/agri.PNG" alt="Logo AgriEnchère" style="width: 150px; height: auto;">
+
+            <h2>Facture - AgriEnchère</h2>
+        </div>
+        <div class="details">
+            <p><strong>ID Commande :</strong> {{ commande.id }}</p>
+            <p><strong>Produit :</strong> {{ commande.produit }}</p>
+            <p><strong>Prix :</strong> {{ commande.prix }} DT</p>
+            <p><strong>Adresse de Livraison :</strong> {{ commande.adresse }}</p>
+            <p><strong>Numéro de Téléphone :</strong> {{ commande.numTel }}</p>
+            <p><strong>Date :</strong> {{ "now"|date("d/m/Y") }}</p>
+        </div>
+        <div class="footer">
+            <p>Merci d'avoir choisi <strong>AgriEnchère</strong> !</p>
+        </div>
+    </div>
+</body>
+</html>
