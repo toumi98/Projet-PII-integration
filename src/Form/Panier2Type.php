@@ -24,12 +24,13 @@ class Panier2Type extends AbstractType
             ->add('id_produit', EntityType::class, [
                 'class' => ProduitStore::class,
                 'choice_label' => function (ProduitStore $produit) {
-                    return sprintf('%s - %s (%.2f €)', $produit->getNom(), $produit->getDescription(), $produit->getPrix());
+                    return sprintf('%s - %s (%.2f dt)', $produit->getNom(), $produit->getDescription(), $produit->getPrix());
                 },
-                'expanded' => false, // Dropdown list
+                'expanded' => true, // Afficher sous forme de cases à cocher
                 'multiple' => true, // Permettre la sélection multiple
                 'by_reference' => false, // Important pour ManyToMany
             ])
+            
             
             ->add('quantite', IntegerType::class, [
                 'label' => 'Quantité',

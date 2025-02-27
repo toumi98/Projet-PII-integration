@@ -37,10 +37,19 @@
             <div class="card-footer text-center">
                 <div class="btn-group" role="group">
                     <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">🔙 Retour à la liste</a>
-               
+                 {% if commande.id is defined %}
+    <a href="{{ path('app_commande_pdf', { id: commande.id }) }}" class="btn btn-danger">
+        <i class="fas fa-file-pdf"></i> Télécharger en PDF
+    </a>
+{% else %}
+    <p class="text-danger">❌ Erreur : Impossible de générer le PDF, commande introuvable.</p>
+{% endif %}
+
+
                 </div>
             </div>
         </div>
     </div>
       {{ '&nbsp;&nbsp;&nbsp;'|raw }}
+  
 {% endblock %}
