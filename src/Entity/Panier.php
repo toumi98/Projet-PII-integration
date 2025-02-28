@@ -111,5 +111,6 @@ class Panier
            'categorie' => $produit->getCategorieId()?->getNom(),
        ], $this->id_produit->toArray());
    }
-   
+ 
+
 }

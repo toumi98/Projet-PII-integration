@@ -1,0 +1,10 @@
+{% extends 'base-user.html.twig' %}
+
+{% block body %}
+    <h1>Statistiques</h1>
+    <canvas id="statsChart"></canvas>
+
+    {{ encore_entry_script_tags('app') }}
+    <canvas id="statsChart" width="400" height="200"></canvas>
+
+{% endblock %}
