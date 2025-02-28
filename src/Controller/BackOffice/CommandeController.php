@@ -125,4 +125,5 @@ public function generatePdf(CommandeRepository $commandeRepository, string $id):
         ['Content-Type' => 'application/pdf']
     );
 }
+
 }
