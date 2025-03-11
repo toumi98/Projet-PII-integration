@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: ReponseRepository::class)]
-#[Broadcast]
+//#[Broadcast]
 class Reponse
 {
     #[ORM\Id]
@@ -22,6 +22,17 @@ class Reponse
     #[ORM\ManyToOne(inversedBy: 'reponses')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user_id = null;
+
+   /* #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dateCreation = null;*/
+    #[ORM\Column(name: 'dateCreation', type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateCreation = null;
+
+    //#[ORM\ManyToOne(inversedBy: 'reponses')]
+    #[ORM\ManyToOne(targetEntity: Reclamation::class, inversedBy: 'reponses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Reclamation $reclamation = null;
+    
 
     public function getId(): ?int
     {
@@ -48,6 +59,30 @@ class Reponse
     public function setUserId(?User $user_id): static
     {
         $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(?\DateTimeInterface $dateCreation): static
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    public function getReclamation(): ?Reclamation
+    {
+        return $this->reclamation;
+    }
+
+    public function setReclamation(?Reclamation $reclamation): static
+    {
+        $this->reclamation = $reclamation;
 
         return $this;
     }

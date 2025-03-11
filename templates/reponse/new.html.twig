@@ -1,0 +1,34 @@
+{% extends 'base-user.html.twig' %}
+
+{% block title %}Créer une Réponse{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center text-warning">Créer une Réponse</h1>
+
+    <div class="card p-4 shadow-lg rounded">
+        {{ form_start(form) }}
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Décrivez votre réponse...'}}) }}
+        </div>
+
+        {# Ajouter un champ pour la réclamation liée (s'il existe dans ton formulaire) #}
+        {% if form.reclamation is defined %}
+        <div class="mb-3">
+            <label class="form-label fw-bold">Réclamation associée</label>
+            {{ form_widget(form.reclamation, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success">Envoyer</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+
+<a href="{{ path('app_reponse_index') }}">Retour à la liste</a>
+{% endblock %}

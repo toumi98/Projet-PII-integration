@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Reponse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .form-container a {
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .form-container a:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container .btn-delete {
+            background-color: #dc3545;
+            margin-top: 10px;
+        }
+
+        .form-container .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .form-container .form-actions {
+            text-align: center;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .form-container {
+                width: 80%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% block body %}
+        <h1>Edit Reponse</h1>
+
+        <div class="form-container">
+            {{ include('reponse/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <div class="form-actions">
+                <a href="{{ path('app_reponse_index') }}">Back to list</a>
+                {{ include('reponse/_delete_form.html.twig', {'button_label': 'Delete', 'class': 'btn-delete'}) }}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

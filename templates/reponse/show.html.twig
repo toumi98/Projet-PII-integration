@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réponse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 15px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% block body %}
+        <h1>Réponse</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ reponse.id }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ reponse.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_reponse_index') }}">Retour à la liste</a>
+        <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}">Modifier</a>
+
+        {{ include('reponse/_delete_form.html.twig') }}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Réponses{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Liste des Réponses</h1>
+
+        <table class="table table-striped table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reponse in reponses %}
+                    <tr>
+                        <td>{{ reponse.id }}</td>
+                        <td>{{ reponse.description }}</td>
+                        <td>
+                            <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                            <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">Aucune réponse trouvée</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-3">
+            <a href="{{ path('app_reponse_new') }}" class="btn btn-success">Ajouter une Réponse</a>
+        </div>
+    </div>
+{% endblock %}

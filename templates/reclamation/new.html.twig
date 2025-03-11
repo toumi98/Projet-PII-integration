@@ -1,0 +1,32 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Créer une Réclamation{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center text-warning">Créer une Réclamation</h1>
+
+    <div class="card p-4 shadow-lg rounded">
+        {{ form_start(form) }}
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Utilisateur</label>
+            {{ form_widget(form.id_user, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Décrivez votre problème...'}}) }}
+        </div>
+
+        {# Le champ `dateCreation` est masqué mais envoyé dans le formulaire #}
+        {{ form_widget(form.dateCreation, {'attr': {'class': 'd-none'}}) }}
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success">Envoyer</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

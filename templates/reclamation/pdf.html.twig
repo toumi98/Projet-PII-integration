@@ -1,0 +1,26 @@
+{# templates/reclamation/export_pdf.html.twig #}
+
+<h1>Liste des Réclamations</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Created At</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for reclamation in reclamations %}
+        <tr>
+            <td>{{ reclamation.id }}</td>
+            <td>{{ reclamation.description }}</td>
+            <td>{{ reclamation.isEtat ? 'Yes' : 'No' }}</td>
+            <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d H:i:s') : 'N/A' }}</td>
+            <td>{{ reclamation.status }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

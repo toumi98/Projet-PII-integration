@@ -18,3 +18,8 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
+# config/routes.yaml
+
+reclamations_export_pdf:
+    path: /reclamation/export-pdf
+    controller: App\Controller\ReclamationController::exportPdf

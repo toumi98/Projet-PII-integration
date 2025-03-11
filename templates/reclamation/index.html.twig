@@ -1,0 +1,107 @@
+{% extends 'base-user.html.twig' %}
+
+{% block title %}Réclamations{% endblock %}
+
+{% block body %}
+<a href="{{ path('app_reclamation_export_pdf') }}" class="btn btn-danger mb-3">
+    Exporter en PDF
+</a>
+
+
+<div class="container mt-4">
+    <h2 class="mb-3">🔍 Filtrer les réclamations</h2>
+
+    <form method="GET" action="{{ path('app_reclamation_index') }}" class="row g-3 mb-4 p-3 shadow rounded bg-light">
+        <div class="col-md-3">
+            <label for="filter_id" class="form-label">ID :</label>
+            <input type="number" name="filter_id" id="filter_id" class="form-control" value="{{ filter_id }}">
+        </div>
+
+        <div class="col-md-3">
+            <label for="filter_date" class="form-label">Date de création :</label>
+            <input type="date" name="filter_date" id="filter_date" class="form-control" value="{{ filter_date }}">
+        </div>
+
+        <div class="col-md-3">
+            <label for="filter_status" class="form-label">Statut :</label>
+            <select name="filter_status" id="filter_status" class="form-select">
+                <option value="">Tous</option>
+                <option value="En cours" {{ filter_status == 'En cours' ? 'selected' : '' }}>En cours</option>
+                <option value="Traité" {{ filter_status == 'Traité' ? 'selected' : '' }}>Traité</option>
+            </select>
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+        </div>
+
+        <div class="col-md-12 text-end">
+            <a href="{{ path('app_reclamation_index') }}" class="btn btn-secondary btn-sm">Réinitialiser</a>
+        </div>
+    </form>
+
+    <table class="table table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>État</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.isEtat ? '✅ Oui' : '❌ Non' }}</td>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('d/m/Y H:i') : 'N/A' }}</td>
+                <td>
+                    {% if reclamation.status == 'En cours' %}
+                        <span class="badge bg-warning">🟡 En cours</span>
+                    {% elseif reclamation.status == 'Traité' %}
+                        <span class="badge bg-success">🟢 Traité</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ reclamation.status }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                    <a href="{{ path('app_reponse_new', {'reclamationId': reclamation.id}) }}" class="btn btn-primary btn-sm">Répondre</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center text-muted">Aucune réclamation trouvée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav class="d-flex justify-content-center">
+        <ul class="pagination">
+            {% if currentPage > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_reclamation_index', {'page': currentPage - 1}) }}">⬅️ Précédent</a>
+                </li>
+            {% endif %}
+
+            {% for page in 1..totalPages %}
+                <li class="page-item {{ page == currentPage ? 'active' : '' }}">
+                    <a class="page-link" href="{{ path('app_reclamation_index', {'page': page}) }}">{{ page }}</a>
+                </li>
+            {% endfor %}
+
+            {% if currentPage < totalPages %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_reclamation_index', {'page': currentPage + 1}) }}">Suivant ➡️</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}
