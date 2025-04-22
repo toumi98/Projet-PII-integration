@@ -11,6 +11,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevel;
+
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
+
+
 
 #[Route('/reponse')]
 final class ReponseController extends AbstractController
@@ -77,6 +86,7 @@ final class ReponseController extends AbstractController
             'form' => $form,
         ]);
     }
+    
 
     #[Route('/{id}', name: 'app_reponse_delete', methods: ['POST'])]
     public function delete(Request $request, Reponse $reponse, EntityManagerInterface $entityManager): Response
@@ -88,4 +98,6 @@ final class ReponseController extends AbstractController
 
         return $this->redirectToRoute('app_reponse_index', [], Response::HTTP_SEE_OTHER);
     }
+   
+
 }
